@@ -1,0 +1,31 @@
+package com.example.webservice2;
+
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+
+@RestController
+public class FrontWebService {
+	
+     @Autowired
+     
+	 DiscoveryClient discoveryClient;
+     
+	 @GetMapping("/")
+	 
+	 public String hello() {
+		 
+	 List<ServiceInstance> instances = discoveryClient.getInstances("name-of-the- microservice1");
+	 ServiceInstance test = instances.get(0);
+	 String hostname = test.getHost();
+	 int port = test.getPort();
+	 
+	 
+	RestTemplate restTemplate = new RestTemplate();
+	String microservice1Address = "http://" + hostname + ":" + port;
+	ResponseEntity<String> response =
+	restTemplate.getForEntity(microservice1Address, String.class);
+	String s = response.getBody();
+	Return s;
+	 
+	}
+
+}

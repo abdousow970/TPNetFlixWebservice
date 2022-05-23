@@ -1,0 +1,12 @@
+package org.springframework.boot;
+
+import com.example.Netflix.NetflixApplication;
+
+public class SpringApplication {
+
+	public static void run(Class<NetflixApplication> class1, String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
